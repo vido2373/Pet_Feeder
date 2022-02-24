@@ -74,6 +74,10 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=XDHOLBBP
 
+[SearchPath1]
+Path=D:\Documents\CUBoulder\LPEDT_ECEN5833\Pet Food Dispenser\Pet_Feeder\Board_Design\PartsLib\Project Outputs for PartsLib\PartsLib\*.*
+IncludeSubFolders=1
+
 [OutputGroup1]
 Name=Netlist Outputs
 Description=
