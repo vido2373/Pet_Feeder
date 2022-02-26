@@ -1,0 +1,4 @@
+Record=TopLevelDocument|FileName=Battery_PMIC_Schematic.SchDoc|SheetNumber=1
+Record=NoMainPathDocument|SourceDocument=Battery_PMIC_Schematic.SchDoc|FileName=BG_PWR_Radio_Schematic.SchDoc|SheetNumber=3
+Record=NoMainPathDocument|SourceDocument=Battery_PMIC_Schematic.SchDoc|FileName=Peripheral_Schematic.SchDoc|SheetNumber=4
+Record=NoMainPathDocument|SourceDocument=Battery_PMIC_Schematic.SchDoc|FileName=Power_Circuit_Schematic.SchDoc|SheetNumber=2
