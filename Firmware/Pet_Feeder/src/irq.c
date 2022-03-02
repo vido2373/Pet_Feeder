@@ -49,7 +49,7 @@ void I2C0_IRQHandler(void) {
     transfer_status = I2C_Transfer(I2C0);
 
     if (transfer_status == i2cTransferDone) {
-        //Scheduler_SetEvent_I2C0_TRANSFER_DONE();
+        Scheduler_SetEvent_I2C0_TRANSFER_DONE();
         NVIC_DisableIRQ(I2C0_IRQn);
     }
     else if (transfer_status < i2cTransferDone) {
@@ -65,7 +65,7 @@ void GPIO_EVEN_IRQHandler(void) {
 
     if (interrupt_flags & (0x01 << PB0_pin)) {
         if (pressed) {
-            Scheduler_SetEvent_PB_PRESSED();
+            Scheduler_SetEvent_PB0_PRESSED();
         }
 
         pressed ^= 1;
