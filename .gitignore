@@ -3,3 +3,76 @@
 /Board_Design/Pet_Feeder_Board/__Previews/*
 /Board_Design/Pet_Feeder_Board/Project Logs for Pet_Feeder_Board/*
 /Board_Design/Pet_Feeder_Board/*.OutJob
+
+# Mac OS directory store files
+/Firmware/Pet_Feeder/.DS_Store
+
+# Object files
+/Firmware/Pet_Feeder/*.o
+# dont ignore these files
+!/Firmware/Pet_Feeder/binapploader.o
+!/Firmware/Pet_Feeder/binapploader_nvm3.o
+!/Firmware/Pet_Feeder/libbluetooth.a
+!/Firmware/Pet_Feeder/libbluetooth_mesh.a
+/Firmware/Pet_Feeder/*.ko
+/Firmware/Pet_Feeder/*.obj
+/Firmware/Pet_Feeder/*.elf
+
+# Compiler Artifacts
+/Firmware/Pet_Feeder/*.d
+/Firmware/Pet_Feeder/*.bin
+/Firmware/Pet_Feeder/*.map
+/Firmware/Pet_Feeder/*makefile
+/Firmware/Pet_Feeder/*.mk
+/Firmware/Pet_Feeder/*.axf
+
+# Precompiled Headers
+/Firmware/Pet_Feeder/*.gch
+/Firmware/Pet_Feeder/*.pch
+
+# Libraries
+/Firmware/Pet_Feeder/*.lib
+/Firmware/Pet_Feeder/*.a
+# dont ignore these files
+!/Firmware/Pet_Feeder/libpsstore.a
+!/Firmware/Pet_Feeder/libbluetooth.a
+!/Firmware/Pet_Feeder/libmbedtls.a
+!/Firmware/Pet_Feeder/librail_efr32xg13_gcc_release.a
+!/Firmware/Pet_Feeder/libnvm3_CM4_gcc.a
+/Firmware/Pet_Feeder/*.la
+/Firmware/Pet_Feeder/*.lo
+
+# Shared objects (inc. Windows DLLs)
+/Firmware/Pet_Feeder/*.dll
+/Firmware/Pet_Feeder/*.so
+/Firmware/Pet_Feeder/*.so.*
+/Firmware/Pet_Feeder/*.dylib
+
+# Executables
+/Firmware/Pet_Feeder/*.exe
+/Firmware/Pet_Feeder/*.out
+/Firmware/Pet_Feeder/*.app
+/Firmware/Pet_Feeder/*.i*86
+/Firmware/Pet_Feeder/*.x86_64
+/Firmware/Pet_Feeder/*.hex
+
+# Debug files
+/Firmware/Pet_Feeder/*.dSYM/
+
+# Release Folders
+/Firmware/Pet_Feeder/GNU\ ARM*
+
+# Temporary files
+/Firmware/Pet_Feeder/*~
+
+# Swap files
+/Firmware/Pet_Feeder/*.swp
+
+# Backup files
+/Firmware/Pet_Feeder/*.bak
+
+# settings file
+/Firmware/Pet_Feeder/.settings
+
+# Project import result
+/Firmware/Pet_Feeder/imported_project_report.html
