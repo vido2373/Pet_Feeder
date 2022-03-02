@@ -26,12 +26,11 @@
  *    misrepresented as being the original software.
  * 3. This notice may not be removed or altered from any source distribution.
  *
- * Date:        08-07-2021
- * Author:      Rishab
+ * Date:        03-03-2022
+ * Authors:      Vishnu and Venkat
  * Description: This code was created by the Silicon Labs application wizard
  *              and started as "Bluetooth - SoC Empty".
- *              It is to be used only for ECEN 5823 "IoT Embedded Firmware".
- *              The MSLA referenced above is in effect.
+ *
  *
  ******************************************************************************/
 
@@ -42,11 +41,12 @@
 #define INCLUDE_LOG_DEBUG 1
 #include "src/log.h"
 
-#define adcFreq   16000000
+
 
 volatile uint32_t sample;
 volatile float millivolts;
-
+uint8_t wr_rd_proximity_value[]={0x26};
+uint8_t proximity_rd_buff[2];
 /*****************************************************************************
  * Application Power Manager callbacks
  *****************************************************************************/
@@ -102,34 +102,9 @@ SL_WEAK void app_init(void)
     PB0_Init();
     PB1_Init();
     I2C0_Init();
-    // Enable ADC0 clock
-    CMU_ClockEnable(cmuClock_ADC0, true);
+    adcInit(); //Init to read pressure sensor values
 
-    // Declare init structs
-    ADC_Init_TypeDef init = ADC_INIT_DEFAULT;
-    ADC_InitSingle_TypeDef initSingle = ADC_INITSINGLE_DEFAULT;
-
-    // Modify init structs and initialize
-    init.prescale = ADC_PrescaleCalc(adcFreq, 0); // Init to max ADC clock for Series 1
-    init.timebase = ADC_TimebaseCalc(0);
-
-    initSingle.diff       = false;        // single ended
-    initSingle.reference  = adcRefVDD;    // internal 2.5V reference
-    initSingle.resolution = adcRes12Bit;  // 12-bit resolution
-    initSingle.acqTime    = adcAcqTime4;  // set acquisition time to meet minimum requirements
-
-    // Select ADC input. See README for corresponding EXP header pin.
-    initSingle.posSel = adcPosSelAPORT2XCH9;
-
-    ADC_Init(ADC0, &init);
-    ADC_InitSingle(ADC0, &initSingle);
-
-    // Enable ADC Single Conversion Complete interrupt
-    ADC_IntEnable(ADC0, ADC_IEN_SINGLE);
-
-    // Enable ADC interrupts
-    NVIC_ClearPendingIRQ(ADC0_IRQn);
-    NVIC_EnableIRQ(ADC0_IRQn);
+    //Proximity sensor init in sl_bt_on_event because its a state machine
 }
 
 /**************************************************************************//**
@@ -144,9 +119,11 @@ SL_WEAK void app_process_action(void)
     //         later assignments.
 
 
+    int begin_proximity_measurement=0;
 
     pet_feeder_event_t event = Scheduler_GetNextEvent();
-    if (event == ev_PB_PRESSED) {
+    if (event == ev_PB0_PRESSED)
+    {
         LOG_INFO("PB pressed!\r\n");
         NVIC_ClearPendingIRQ(ADC0_IRQn);
         NVIC_EnableIRQ(ADC0_IRQn);
@@ -164,6 +141,15 @@ SL_WEAK void app_process_action(void)
             gpioLed0SetOff();
         }
         LOG_INFO("%d\r\n", (int)millivolts);
+        begin_proximity_measurement=1;
+    }
+
+    if (begin_proximity_measurement ==1)
+    {
+        for(int i=0;i<1000;i++);
+        LOG_INFO("Reading proximity registers %d\n\r",I2C0_WriteRead(0x60,wr_rd_proximity_value,sizeof(wr_rd_proximity_value),proximity_rd_buff,sizeof(proximity_rd_buff)));
+        //for(int i=0;i<1000;i++);
+        LOG_INFO("Reading proximity values %d\n\r",((proximity_rd_buff[1]<<8)|proximity_rd_buff[0]));
     }
 
 
@@ -182,10 +168,9 @@ SL_WEAK void app_process_action(void)
 void sl_bt_on_event(sl_bt_msg_t *evt)
 {
 
-    // Just a trick to hide a compiler warning about unused input parameter evt.
-    // We will add real functionality here later.
-    if (evt->header) {
-            printf(".\n");
-    }
+    static bool proximity_init_done = false;
+    if(proximity_init_done == false)
+      proximity_init_done = SI1145_proximity_init_SM(evt);
+
 } // sl_bt_on_event()
 

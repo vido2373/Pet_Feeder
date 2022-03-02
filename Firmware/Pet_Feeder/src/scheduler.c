@@ -58,12 +58,22 @@ static pet_feeder_event_t EventQ_DequeueEvent(void) {
 }
 
 
-void Scheduler_SetEvent_PB_PRESSED(void) {
+void Scheduler_SetEvent_PB0_PRESSED(void) {
     CORE_DECLARE_IRQ_STATE;
 
     CORE_ENTER_CRITICAL();
-    EventQ_EnqueueEvent(ev_PB_PRESSED);
+    EventQ_EnqueueEvent(ev_PB0_PRESSED);
     CORE_EXIT_CRITICAL();
+}
+
+void Scheduler_SetEvent_I2C0_TRANSFER_DONE(void)
+{
+  CORE_DECLARE_IRQ_STATE;
+  //Enter Critical section to ensure read-modify-write operation is complete
+  CORE_ENTER_CRITICAL();
+  EventQ_EnqueueEvent(ev_I2C_Tx_complete);
+  //Exit Critical section on successfully updating of event
+  CORE_EXIT_CRITICAL();
 }
 
 

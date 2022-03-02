@@ -57,8 +57,8 @@
 #include "src/irq.h"
 #include "src/i2c.h"
 #include "src/scheduler.h"
-#include "em_cmu.h"
-#include "em_adc.h"
+#include "src/adc_pressure.h"
+#include "src/SI1145_proximity.h"
 
 #define EM0                           (0)
 #define EM1                           (1)

@@ -64,7 +64,16 @@ I2C_TransferReturn_TypeDef I2C0_Read(uint8_t addr, uint8_t* rd_buff, uint8_t rd_
  */
 I2C_TransferReturn_TypeDef I2C0_WriteRead(uint8_t addr, uint8_t* wr_buff, uint8_t wr_buff_len, uint8_t* rd_buff, uint8_t rd_buff_len);
 
-
+/*
+ * Writes and writes (Start and restart I2C sequence) from I2C0 bus
+ *
+ * @param addr - Slave address
+ * @param wr_buff - Buffer to write to slave
+ * @param wr_buff_len - Length of wr_buff
+ *
+ * @return None
+ */
+I2C_TransferReturn_TypeDef I2C0_WriteWrite(uint8_t addr, uint8_t* wr_buff, uint8_t wr_buff_len);
 /*
  * Enables I2C0 interrupts for transfer
  *
