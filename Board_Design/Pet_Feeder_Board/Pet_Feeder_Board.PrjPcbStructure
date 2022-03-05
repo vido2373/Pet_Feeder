@@ -1,5 +1,6 @@
-Record=TopLevelDocument|FileName=Battery_PMIC_MCU_Prog_Schematic.SchDoc|SheetNumber=1
-Record=NoMainPathDocument|SourceDocument=Battery_PMIC_MCU_Prog_Schematic.SchDoc|FileName=BG_IO_Schematic.SchDoc|SheetNumber=5
-Record=NoMainPathDocument|SourceDocument=Battery_PMIC_MCU_Prog_Schematic.SchDoc|FileName=BG_PWR_Radio_Schematic.SchDoc|SheetNumber=3
-Record=NoMainPathDocument|SourceDocument=Battery_PMIC_MCU_Prog_Schematic.SchDoc|FileName=Peripheral_Schematic.SchDoc|SheetNumber=4
-Record=NoMainPathDocument|SourceDocument=Battery_PMIC_MCU_Prog_Schematic.SchDoc|FileName=Power_Circuit_Schematic.SchDoc|SheetNumber=2
+Record=TopLevelDocument|FileName=Battery_PMIC.SchDoc|SheetNumber=1
+Record=NoMainPathDocument|SourceDocument=Battery_PMIC.SchDoc|FileName=BG_IO_Programming_Schematic.SchDoc|SheetNumber=5
+Record=NoMainPathDocument|SourceDocument=Battery_PMIC.SchDoc|FileName=BG_PWR_Radio_Schematic.SchDoc|SheetNumber=3
+Record=NoMainPathDocument|SourceDocument=Battery_PMIC.SchDoc|FileName=Notes.SchDoc|SheetNumber=6
+Record=NoMainPathDocument|SourceDocument=Battery_PMIC.SchDoc|FileName=Peripheral_Schematic.SchDoc|SheetNumber=4
+Record=NoMainPathDocument|SourceDocument=Battery_PMIC.SchDoc|FileName=Power_Circuit_Schematic.SchDoc|SheetNumber=2
